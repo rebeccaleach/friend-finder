@@ -39,14 +39,15 @@
             </div>
 
             <div class="form-group p-t-2">
+              <p>You can answer each question using a a scale of 1 to 5, where 1 means "strongly disagree" and 5 means "strongly agree."</p>
               <h5>Question 1: Do you like to read books?</h5><br>
 
               <select class="form-control" id="q1">
-                <option>1 (Strongly Disagree)</option>
+                <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>5 (Strongly Agree)</option>
+                <option>5</option>
               </select>
 
             </div>
@@ -54,27 +55,27 @@
             <div class="form-group p-t-2">
               <h5>Question 2: Are you a morning person?</h5><br>
 
-              <select class="form-control">
-                <option>1 (Strongly Disagree)</option>
+              <select class="form-control" id="q2">
+                <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>5 (Strongly Agree)</option>
+                <option>5</option>
               </select>
             </div>
 
             <div class="form-group p-t-2">
               <h5>Question 3: Do you think the prequels are real Star Wars movies?</h5><br>
-              <select class="form-control">
-                <option>1 (Strongly Disagree)</option>
+              <select class="form-control" id="q3">
+                <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
-                <option>5 (Strongly Agree)</option>
+                <option>5</option>
               </select>
             </div>
 
-            <button class="btn btn-default m-y-2" id="button" type="submit">Submit</button>
+            <button class="btn btn-default m-y-2" id="submit" type="submit">Submit</button>
 
           </form>
 
@@ -99,7 +100,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js" integrity="sha384-THPy051/pYDQGanwU6poAc/hOdQxjnOEXzbT+OuUAFqNqFjL+4IGLBgCJC3ZOShY" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js" integrity="sha384-Plbmg8JY28KFelvJVai01l8WyZzrYWG825m+cZ0eDDS1f7d/js6ikvy1+X+guPIB" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
-    
+
+    <script type="text/javascript">
+      
+      console.log('Is this thing on?');
+
+      var name;
+      var picture;
+
+      var q1;
+      var q2;
+      var q3;
+
+      var newPersonScores = [];
+      var newPerson = {};
+
+      $('#submit').on('click', function() {
+        name = $('#name').val().trim();
+        picture = $('#picture').val().trim();
+        q1 = $('#q1').val().trim();
+        q2 = $('#q2').val().trim();
+        q3 = $('#q3').val().trim();
+
+        newPersonScores.push(q1, q2, q3);
+
+        newPerson = {
+          "name": name,
+          "picture": picture,
+          "scores": newPersonScores
+        };
+
+        console.log(newPersonScores);
+        console.log(newPerson);
+
+
+        // posting it to the site or something?
+        var currentURL = window.location.origin;
+
+      });
+
+    </script>
+
 
   </body>
 
